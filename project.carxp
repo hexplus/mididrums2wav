@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE CARLA-PROJECT>
+<CARLA-PROJECT VERSION='2.5'>
+ <EngineSettings>
+  <ForceStereo>false</ForceStereo>
+  <PreferPluginBridges>false</PreferPluginBridges>
+  <PreferUiBridges>true</PreferUiBridges>
+  <UIsAlwaysOnTop>false</UIsAlwaysOnTop>
+  <MaxParameters>200</MaxParameters>
+  <UIBridgesTimeout>4000</UIBridgesTimeout>
+ </EngineSettings>
+
+ <Transport>
+  <BeatsPerMinute>120</BeatsPerMinute>
+ </Transport>
+
+ <!-- MT-PowerDrumKit -->
+ <Plugin>
+  <Info>
+   <Type>VST3</Type>
+   <Name>MT-PowerDrumKit</Name>
+   <Binary>C:\Program Files\Common Files\VST3/MT-PowerDrumKit.vst3</Binary>
+   <Label>MT-PowerDrumKit</Label>
+  </Info>
+
+  <Data>
+   <Active>Yes</Active>
+   <ControlChannel>1</ControlChannel>
+   <Options>0x3f9</Options>
+
+   <Chunk>
+VkMyIRIEAAA8P3htbCB2ZXJzaW9uPSIxLjAiIGVuY29kaW5nPSJVVEYtOCI/PiA8VlNUM1BsdWdpblN0YXRlPjxJQ29tcG9uZW50PjY3Ni5CLi4uLlBwLi4u
+Li4uLjNPSGVXWDlmVHdiNkMuLi4uLi4uLi4uLi4uLjlpdkFRdU8uLi4uLjczNkI4aVR3YnFPWkl2bDluay5hNUMuLi4uLi4uLi4rLi4uLjdDLi4udk84UHNx
+OXY0VHc1eWFSTG5PV2pzQyt6Z1ZEOENZV0l4T2dXSUordm4xVTVpU1Q2eE9OUXNLKy4uLi45Qy4uLjNPLi4uZisuLi4uOUMuLi4zTy4uLmYrLi4uLjlDLi4u
+M08uLi5mKy4uLi45Qy4uLjNPLi4uZisuLi4uOUMuLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4u
+Li4uLi4uLi4uLi4uLmo0ekk4Qy4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4u
+Li4uLi4uLi4uLi4uLi4uLi5mKy4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLmYrLi4uLjlDLi4uM08uLi5mKy4uLi45Qy4uLjNPLi4uZisuLi4uOUMu
+Li4zTy4uLmYrLi4uLjlDLi4uM08uLi5mK0RBLlQ1U0Qudm9PLi4ubDlEQS5yNVNELlBxT1EuLnU5Li4uRDdTRC5Qck8uLi50OS4uLm41Qy4uLnNPLi4uMTku
+Li5INkMuLmZ0T1EuLjY5REEuVDZDLi4udE8uLi5oOS4uLmY1Qy4uLi4uUS4uKzkuLi4zNlNELlB1Ty4uLi4uREEuTDZDLi4uck8uLi5yOS4uLi4uLi4uLi4u
+Li4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4ub09RLi5vOS4uLi4uLi4uLnZPLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4u
+Li4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4udk8uLi5mNy4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4u
+Li4uLi4uLi4uLjNPLi4uLjguLi4uLi4uLi4zTy4uLmYrbnYwaXZDLi4zMk8uLi5KKy4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLmYrLjwvSUNvbXBv
+bmVudD48SUVkaXRDb250cm9sbGVyPjAuPC9JRWRpdENvbnRyb2xsZXI+PC9WU1QzUGx1Z2luU3RhdGU+AA==
+   </Chunk>
+  </Data>
+ </Plugin>
+</CARLA-PROJECT>
