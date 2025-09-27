@@ -54,38 +54,44 @@ def start_carla_with_project_file(project_file_path, headless=False):
         print("ERROR: Carla not found!")
         return None
 
-    try:
-        # Prepare command with headless options if requested
-        cmd = [carla_path]
+    # Check if project file exists
+    if not os.path.exists(project_file_path):
+        print(f"ERROR: Project file not found: {project_file_path}")
+        return None
 
+    try:
         if headless:
-            # Try different headless options that Carla might support
-            cmd.extend([
-                "--no-gui",           # Common headless option
-                "--nogui",            # Alternative headless option
-                "-n",                 # Short headless option
-                "--headless"          # Another possible headless option
-            ])
-            print(f"Starting Carla in HEADLESS mode with project file: {project_file_path}")
+            # Since Carla doesn't have true headless mode, start with minimal window
+            # and hidden/minimized state using Windows-specific flags
+            print(f"Starting Carla in MINIMIZED mode (pseudo-headless) with project file: {project_file_path}")
+            cmd = [carla_path, project_file_path]
+
+            # Use subprocess.STARTUPINFO to minimize the window on Windows
+            import subprocess
+            startupinfo = subprocess.STARTUPINFO()
+            startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = 2  # SW_SHOWMINIMIZED
+
+            process = subprocess.Popen(cmd, startupinfo=startupinfo)
         else:
             print(f"Starting Carla in GUI mode with project file: {project_file_path}")
+            cmd = [carla_path, project_file_path]
+            process = subprocess.Popen(cmd)
 
-        cmd.append(project_file_path)
-
-        # Start Carla with project file as argument
-        process = subprocess.Popen(cmd)
-
-        # Give more time for headless mode to initialize
+        # Give more time for initialization
         sleep_time = 5 if headless else 3
         time.sleep(sleep_time)
 
         if process.poll() is None:
-            mode_str = "headless" if headless else "GUI"
+            mode_str = "minimized (pseudo-headless)" if headless else "GUI"
             print(f"[OK] Carla started successfully in {mode_str} mode")
             print("[OK] Project file should be loading automatically...")
             return process
         else:
             print("[ERROR] Carla failed to start")
+            if headless:
+                print("Minimized mode failed, trying normal GUI mode as fallback...")
+                return start_carla_with_project_file(project_file_path, headless=False)
             return None
     except Exception as e:
         print(f"Error starting Carla with project file: {e}")
@@ -129,13 +135,13 @@ Directory Structure:
     parser.add_argument(
         '--headless',
         action='store_true',
-        help='Run Carla in headless mode (no GUI). Useful for batch processing on servers or automated workflows.'
+        help='Run Carla in minimized mode (pseudo-headless). Window is minimized but still present. Useful for batch processing.'
     )
 
     parser.add_argument(
         '--no-gui',
         action='store_true',
-        help='Alias for --headless'
+        help='Alias for --headless (minimized mode)'
     )
 
     return parser.parse_args()
@@ -330,11 +336,11 @@ def main():
     args = parse_arguments()
     headless_mode = args.headless or args.no_gui
 
-    mode_str = "HEADLESS" if headless_mode else "GUI"
+    mode_str = "MINIMIZED" if headless_mode else "GUI"
     print(f"=== AUTOMATIC MIDI TO AUDIO BATCH CONVERTER ({mode_str} MODE) ===")
     print("This script processes multiple MIDI files from 'midis' directory.")
     if headless_mode:
-        print("Running in headless mode - no Carla GUI will be shown.")
+        print("Running in minimized mode - Carla window will be minimized to taskbar.")
     print()
 
     # Get all MIDI files
@@ -374,16 +380,16 @@ def main():
     print(f"Carla should automatically load: {project_file}")
 
     if headless_mode:
-        print("Headless mode - no GUI verification needed:")
-        print("1. MT Power Drum Kit loads automatically in background")
+        print("Minimized mode - minimal GUI verification needed:")
+        print("1. MT Power Drum Kit loads automatically (check taskbar)")
         print("2. Audio routing should be configured from your project file")
         print("3. MIDI input configured automatically")
-        print("4. No manual verification required")
+        print("4. Window is minimized but can be restored if needed")
         print()
-        print("Waiting 10 seconds for headless loading...")
+        print("Waiting 8 seconds for minimized loading...")
 
-        for i in range(10, 0, -1):
-            print(f"Auto-continuing in {i} seconds... (Loading in background)")
+        for i in range(8, 0, -1):
+            print(f"Auto-continuing in {i} seconds... (Loading minimized)")
             time.sleep(1)
     else:
         print("GUI mode - please verify in Carla:")

@@ -42,12 +42,13 @@ Required packages: `mido`, `sounddevice`, `numpy`, `scipy`
 python midi_to_audio.py
 ```
 
-**Headless Mode (No GUI):**
+**Minimized Mode (Pseudo-Headless):**
 ```bash
 python midi_to_audio.py --headless
 # or
 python midi_to_audio.py --no-gui
 ```
+*Note: Carla doesn't support true headless mode. This minimizes the window to the taskbar.*
 
 **Help:**
 ```bash
@@ -112,19 +113,24 @@ python midi_to_audio.py --help
 - **Single Setup**: Configure Carla once, process unlimited files
 - **GUI & Headless Modes**: Run with or without Carla GUI interface
 
-## Headless Mode
+## Minimized Mode (Pseudo-Headless)
 
 **Perfect for:**
-- **Server environments** without display
-- **Automated workflows** and CI/CD pipelines
+- **Reduced visual distraction** during batch processing
+- **Automated workflows** where GUI isn't needed
 - **Batch processing** large numbers of files
-- **Background processing** without user interaction
+- **Background-style processing** with minimal window presence
 
 **Benefits:**
-- **Lower resource usage** (no GUI rendering)
-- **Faster startup** times
-- **Server-friendly** operation
-- **Automated deployment** compatible
+- **Reduced screen clutter** (window minimized to taskbar)
+- **Less visual distraction** during long batch operations
+- **Still accessible** if manual intervention needed
+- **Compatible with automation** scripts
+
+**Limitations:**
+- **Not true headless** - Carla process still has a window
+- **Windows-specific** minimization behavior
+- **Requires display** environment (not suitable for true servers)
 
 ## Command Line Options
 
@@ -132,13 +138,13 @@ python midi_to_audio.py --help
 python midi_to_audio.py [OPTIONS]
 
 Options:
-  --headless    Run Carla in headless mode (no GUI)
+  --headless    Run Carla in minimized mode (pseudo-headless)
   --no-gui      Alias for --headless
   -h, --help    Show help message and exit
 
 Examples:
   python midi_to_audio.py                    # GUI mode (default)
-  python midi_to_audio.py --headless         # Headless mode
+  python midi_to_audio.py --headless         # Minimized mode
   python midi_to_audio.py --no-gui          # Same as --headless
 ```
 
