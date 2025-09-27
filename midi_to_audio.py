@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 """
+MIDI to Audio Converter (Drums)
+
 Automatic MIDI to audio converter with VB-Audio routing.
 This script automatically configures VB-Audio and Carla for MIDI to audio conversion.
 Supports both GUI and headless modes for batch processing.
+
+Copyright (c) 2024 MIDI to Audio Converter (Drums)
+Licensed under the MIT License - see LICENSE file for details.
 """
 
 import subprocess

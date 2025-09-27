@@ -151,3 +151,7 @@ Examples:
 - Process is fully automated after initial Carla project setup
 - Carla remains open during batch processing for efficiency
 - Headless mode falls back to GUI mode if unsupported
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
